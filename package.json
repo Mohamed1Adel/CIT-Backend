@@ -11,11 +11,10 @@
   },
   "name": "backend",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +22,9 @@
   },
   "keywords": [],
   "author": "",
+  "engines": {
+    "node": "18.18.0"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Mohamed1Adel/CIT-Backend/issues"
