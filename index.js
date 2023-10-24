@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const compression = require("compression");
@@ -11,7 +13,7 @@ const Outbound = require("./models/outbound");
 
 const Program = require("./models/program");
 app.use(cors());
-app.use(compression())
+app.use(compression());
 app.use(bodyParser.json({ limit: "35mb" }));
 const port = 5000;
 const mongoose = require("mongoose");
@@ -24,7 +26,6 @@ app.use(
 );
 app.use(bodyParser.json());
 
-
 app.get("/", (req, res) => {
   // res.send("Hello world!");
   // res.sendFile("./views/home.html", { root: __dirname });
@@ -35,7 +36,6 @@ app.post("/", (req, res) => {
   console.log(req.body);
   res.redirect("/");
 });
-
 
 {
   //day tour section
@@ -88,61 +88,56 @@ app.post("/", (req, res) => {
   });
 }
 
-
 // domestic
 {
-
-
-app.post("/addDomestic", (req, res) => {
-  const domestic = new Domestic(req.body);
-  domestic.save();
-  console.log(req.body);
-  res.redirect("/");
-});
-app.get("/getAllDomestics", async (req, res) => {
-  const domestics = await Domestic.find();
-  console.log(domestics);
-  res.json(domestics);
-});
-app.get("/getDomesticDetails/:id", async (req, res) => {
-  try {
+  app.post("/addDomestic", (req, res) => {
+    const domestic = new Domestic(req.body);
+    domestic.save();
+    console.log(req.body);
+    res.redirect("/");
+  });
+  app.get("/getAllDomestics", async (req, res) => {
+    const domestics = await Domestic.find();
+    console.log(domestics);
+    res.json(domestics);
+  });
+  app.get("/getDomesticDetails/:id", async (req, res) => {
+    try {
+      const id = req.params.id;
+      const domestic = await Domestic.findById(id);
+      res.json(domestic);
+      return;
+    } catch (e) {
+      console.log("error while reading dmoestic of id ", id);
+      return res.send("error");
+    }
+  });
+  app.patch("/updateDomesticDetails/:id", async (req, res) => {
+    try {
+      const id = req.params.id;
+      const domestic = await Domestic.findOneAndUpdate({ _id: id }, req.body, {
+        new: true,
+      });
+      res.json(domestic);
+      console.log("update succefully");
+      return;
+    } catch (e) {
+      console.log("error while reading dmoestic of id ", id);
+      return res.send("error");
+    }
+  });
+  app.delete("/deleteDomestic/:id", async (req, res) => {
     const id = req.params.id;
-    const domestic = await Domestic.findById(id);
-    res.json(domestic);
-    return;
-  } catch (e) {
-    console.log("error while reading dmoestic of id ", id);
-    return res.send("error");
-  }
-});
-app.patch("/updateDomesticDetails/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const domestic = await Domestic.findOneAndUpdate({ _id: id }, req.body, {
-      new: true,
-    });
-    res.json(domestic);
-    console.log("update succefully");
-    return;
-  } catch (e) {
-    console.log("error while reading dmoestic of id ", id);
-    return res.send("error");
-  }
-});
-app.delete("/deleteDomestic/:id", async (req, res) => {
-  const id = req.params.id;
-  try {
-    const domestic = await Domestic.deleteOne({ _id: id });
-    res.json({ deletedCount: domestic.deletedCount });
-    return;
-  } catch (e) {
-    console.log("error while reading dmoestic of id ", id);
-    return res.send("error");
-  }
-});
-
+    try {
+      const domestic = await Domestic.deleteOne({ _id: id });
+      res.json({ deletedCount: domestic.deletedCount });
+      return;
+    } catch (e) {
+      console.log("error while reading dmoestic of id ", id);
+      return res.send("error");
+    }
+  });
 }
-
 
 {
   // hajjOmrah section
@@ -199,7 +194,6 @@ app.delete("/deleteDomestic/:id", async (req, res) => {
   });
 }
 
-
 {
   // nileCruise section
 
@@ -254,7 +248,6 @@ app.delete("/deleteDomestic/:id", async (req, res) => {
     }
   });
 }
-
 
 {
   // Outbound section
@@ -358,17 +351,11 @@ app.delete("/deleteDomestic/:id", async (req, res) => {
   });
 }
 
-
-
-
-
 mongoose
-  .connect(
-    "mongodb+srv://mohamedqwe542:Sliman01556040246@cluster0.sx79eno.mongodb.net/?retryWrites=true&w=majority"
-  )
+  .connect(process.env.URI)
   .then(() => {
-    app.listen(port, () => {
-      console.log(`http://localhost:${port}`);
+    app.listen(process.env.PORT, () => {
+      console.log(`${process.env.DOMAIN_NAME}`);
     });
   })
   .catch((err) => {
