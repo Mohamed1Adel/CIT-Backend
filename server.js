@@ -15,7 +15,7 @@ const Program = require("./models/program");
 app.use(cors());
 app.use(compression());
 app.use(bodyParser.json({ limit: "35mb" }));
-const port = 5000;
+const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 app.use(
   bodyParser.urlencoded({
@@ -354,7 +354,7 @@ app.use(bodyParser.json());
 mongoose
   .connect(process.env.URI)
   .then(() => {
-    app.listen(process.env.PORT, () => {
+    app.listen(port, () => {
       console.log(`${process.env.DOMAIN_NAME} , ${process.env.PORT}`);
     });
   })
