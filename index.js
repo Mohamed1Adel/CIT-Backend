@@ -26,16 +26,16 @@ app.use(
 );
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  // res.send("Hello world!");
-  // res.sendFile("./views/home.html", { root: __dirname });
-});
+// app.get("/", (req, res) => {
+//   // res.send("Hello world!");
+//   // res.sendFile("./views/home.html", { root: __dirname });
+// });
 
-app.post("/", (req, res) => {
-  // res.send("Hello world!");
-  console.log(req.body);
-  res.redirect("/");
-});
+// app.post("/", (req, res) => {
+//   // res.send("Hello world!");
+//   console.log(req.body);
+//   res.redirect("/");
+// });
 
 {
   //day tour section
