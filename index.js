@@ -355,7 +355,7 @@ mongoose
   .connect(process.env.URI)
   .then(() => {
     app.listen(process.env.PORT, () => {
-      console.log(`${process.env.DOMAIN_NAME}`);
+      console.log(`${process.env.DOMAIN_NAME} , ${process.env.PORT}`);
     });
   })
   .catch((err) => {
