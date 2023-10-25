@@ -21,6 +21,14 @@ const dayTourSchema = mongoose.Schema({
       dayContent: String,
     },
   ],
+  rates: [
+    {
+      id: Number,
+      carType: String,
+      costPerPerson: String,
+      persons: String,
+    },
+  ],
   packInclude: String,
   termsAndConditions: String,
   cancelationPolices: String,
