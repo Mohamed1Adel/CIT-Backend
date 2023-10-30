@@ -37,6 +37,7 @@ const programSchema = mongoose.Schema({
   box8: String,
   box9: String,
   box10: String,
+  hotOffer: Boolean,
 });
 
 const program = mongoose.model("Program", programSchema);

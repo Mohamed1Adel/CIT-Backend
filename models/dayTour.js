@@ -32,6 +32,7 @@ const dayTourSchema = mongoose.Schema({
   packInclude: String,
   termsAndConditions: String,
   cancelationPolices: String,
+  hotOffer: Boolean,
 });
 
 const dayTour = mongoose.model("dayTour", dayTourSchema);
