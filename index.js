@@ -10,6 +10,9 @@ const Domestic = require("./models/domestic");
 const HajjOmrah = require("./models/hajjOmrah");
 const NileCruise = require("./models/nileCruise");
 const Outbound = require("./models/outbound");
+const MainSliderImages = require("./models/mainSliderImages");
+const TransportationSliderImages = require("./models/transportationSliderImages");
+const HajjOmrahSliderImages = require("./models/hajjOmrahSliderImages");
 
 const Program = require("./models/program");
 app.use(cors());
@@ -343,6 +346,96 @@ app.get("/", (req, res) => {
     try {
       const program = await Program.deleteOne({ _id: id });
       res.json({ deletedCount: program.deletedCount });
+      return;
+    } catch (e) {
+      console.log("error while reading Program of id ", id);
+      return res.send("error");
+    }
+  });
+}
+
+{
+  // sliders Images
+
+  //main slider
+
+  app.post("/mainSlider", (req, res) => {
+    const mainSliderImages = new MainSliderImages(req.body);
+    mainSliderImages.save();
+    console.log(req.body);
+    res.redirect("/");
+  });
+  app.get("/getMainSlider", async (req, res) => {
+    const mainSliderImages = await MainSliderImages.find();
+    res.json(mainSliderImages);
+  });
+  app.patch("/updateMainSlider", async (req, res) => {
+    try {
+      // const id = req.params.id;
+      const mainSliderImages = await MainSliderImages.findOneAndUpdate(
+        req.body,
+        {
+          new: true,
+        }
+      );
+      res.json(mainSliderImages);
+      console.log("update succefully");
+      return;
+    } catch (e) {
+      console.log("error while reading Program of id ", id);
+      return res.send("error");
+    }
+  });
+
+  //transportation slider
+
+  app.post("/transportationSlider", (req, res) => {
+    const transportationSliderImages = new TransportationSliderImages(req.body);
+    transportationSliderImages.save();
+    console.log(req.body);
+    res.redirect("/");
+  });
+  app.get("/getTransportationSlider", async (req, res) => {
+    const transportationSliderImages = await TransportationSliderImages.find();
+    res.json(transportationSliderImages);
+  });
+  app.patch("/updateTransportationSlider", async (req, res) => {
+    try {
+      // const id = req.params.id;
+      const transportationSliderImages =
+        await TransportationSliderImages.findOneAndUpdate(req.body, {
+          new: true,
+        });
+      res.json(transportationSliderImages);
+      console.log("update succefully");
+      return;
+    } catch (e) {
+      console.log("error while reading Program of id ", id);
+      return res.send("error");
+    }
+  });
+
+  //hajjOmreh slider
+
+  app.post("/hajjOmrahSlider", (req, res) => {
+    const hajjOmrahSliderImages = new HajjOmrahSliderImages(req.body);
+    hajjOmrahSliderImages.save();
+    console.log(req.body);
+    res.redirect("/");
+  });
+  app.get("/getHajjOmrahSlider", async (req, res) => {
+    const hajjOmrahSliderImages = await HajjOmrahSliderImages.find();
+    res.json(hajjOmrahSliderImages);
+  });
+  app.patch("/updateHajjOmrahSlider", async (req, res) => {
+    try {
+      // const id = req.params.id;
+      const hajjOmrahSliderImages =
+        await HajjOmrahSliderImages.findOneAndUpdate(req.body, {
+          new: true,
+        });
+      res.json(hajjOmrahSliderImages);
+      console.log("update succefully");
       return;
     } catch (e) {
       console.log("error while reading Program of id ", id);
