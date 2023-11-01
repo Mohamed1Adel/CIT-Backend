@@ -369,10 +369,12 @@ app.get("/", (req, res) => {
     const mainSliderImages = await MainSliderImages.find();
     res.json(mainSliderImages);
   });
-  app.patch("/updateMainSlider", async (req, res) => {
+  app.patch("/updateMainSlider/:id", async (req, res) => {
+    const id = req.params.id;
     try {
       // const id = req.params.id;
       const mainSliderImages = await MainSliderImages.findOneAndUpdate(
+        { _id: id },
         req.body,
         {
           new: true,
@@ -399,13 +401,18 @@ app.get("/", (req, res) => {
     const transportationSliderImages = await TransportationSliderImages.find();
     res.json(transportationSliderImages);
   });
-  app.patch("/updateTransportationSlider", async (req, res) => {
+  app.patch("/updateTransportationSlider/:id", async (req, res) => {
+    const id = req.params.id;
     try {
       // const id = req.params.id;
       const transportationSliderImages =
-        await TransportationSliderImages.findOneAndUpdate(req.body, {
-          new: true,
-        });
+        await TransportationSliderImages.findOneAndUpdate(
+          { _id: id },
+          req.body,
+          {
+            new: true,
+          }
+        );
       res.json(transportationSliderImages);
       console.log("update succefully");
       return;
@@ -427,11 +434,12 @@ app.get("/", (req, res) => {
     const hajjOmrahSliderImages = await HajjOmrahSliderImages.find();
     res.json(hajjOmrahSliderImages);
   });
-  app.patch("/updateHajjOmrahSlider", async (req, res) => {
+  app.patch("/updateHajjOmrahSlider/:id", async (req, res) => {
+    const id = req.params.id;
     try {
       // const id = req.params.id;
       const hajjOmrahSliderImages =
-        await HajjOmrahSliderImages.findOneAndUpdate(req.body, {
+        await HajjOmrahSliderImages.findOneAndUpdate({ _id: id }, req.body, {
           new: true,
         });
       res.json(hajjOmrahSliderImages);
