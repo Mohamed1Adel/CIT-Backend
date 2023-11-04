@@ -443,7 +443,7 @@ app.get("/", (req, res) => {
           new: true,
         });
       res.json(hajjOmrahSliderImages);
-      console.log("update succefully");
+      console.log("update succefullyy");
       return;
     } catch (e) {
       console.log("error while reading Program of id ", id);
