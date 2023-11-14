@@ -37,13 +37,14 @@ const outboundSchema = mongoose.Schema({
       double: String,
       triple: String,
       child: String,
-    }
+    },
   ],
   images: [
     {
       img_url: String,
     },
   ],
+  hotOffer: Boolean,
 });
 
 const outbound = mongoose.model("Outbound", outboundSchema);

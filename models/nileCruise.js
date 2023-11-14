@@ -36,6 +36,7 @@ const nileCruiseSchema = mongoose.Schema({
   termsAndConditions: String,
   cancellation: String,
   nileCruise: Boolean,
+  hotOffer: Boolean,
 });
 
 const nileCruise = mongoose.model("nileCruise", nileCruiseSchema);

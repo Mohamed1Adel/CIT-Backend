@@ -10,6 +10,9 @@ const Domestic = require("./models/domestic");
 const HajjOmrah = require("./models/hajjOmrah");
 const NileCruise = require("./models/nileCruise");
 const Outbound = require("./models/outbound");
+const MainSliderImages = require("./models/mainSliderImages");
+const TransportationSliderImages = require("./models/transportationSliderImages");
+const HajjOmrahSliderImages = require("./models/hajjOmrahSliderImages");
 
 const Program = require("./models/program");
 app.use(cors());
@@ -371,13 +374,114 @@ app.post("/login",async(req,res)=>{
   });
 }
 
+{
+  // sliders Images
+
+  //main slider
+
+  app.post("/mainSlider", (req, res) => {
+    const mainSliderImages = new MainSliderImages(req.body);
+    mainSliderImages.save();
+    console.log(req.body);
+    res.redirect("/");
+  });
+  app.get("/getMainSlider", async (req, res) => {
+    const mainSliderImages = await MainSliderImages.find();
+    res.json(mainSliderImages);
+  });
+  app.patch("/updateMainSlider/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+      // const id = req.params.id;
+      const mainSliderImages = await MainSliderImages.findOneAndUpdate(
+        { _id: id },
+        req.body,
+        {
+          new: true,
+        }
+      );
+      res.json(mainSliderImages);
+      console.log("update succefully");
+      return;
+    } catch (e) {
+      console.log("error while reading Program of id ", id);
+      return res.send("error");
+    }
+  });
+
+  //transportation slider
+
+  app.post("/transportationSlider", (req, res) => {
+    const transportationSliderImages = new TransportationSliderImages(req.body);
+    transportationSliderImages.save();
+    console.log(req.body);
+    res.redirect("/");
+  });
+  app.get("/getTransportationSlider", async (req, res) => {
+    const transportationSliderImages = await TransportationSliderImages.find();
+    res.json(transportationSliderImages);
+  });
+  app.patch("/updateTransportationSlider/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+      // const id = req.params.id;
+      const transportationSliderImages =
+        await TransportationSliderImages.findOneAndUpdate(
+          { _id: id },
+          req.body,
+          {
+            new: true,
+          }
+        );
+      res.json(transportationSliderImages);
+      console.log("update succefully");
+      return;
+    } catch (e) {
+      console.log("error while reading Program of id ", id);
+      return res.send("error");
+    }
+  });
+
+  //hajjOmreh slider
+
+  app.post("/hajjOmrahSlider", (req, res) => {
+    const hajjOmrahSliderImages = new HajjOmrahSliderImages(req.body);
+    hajjOmrahSliderImages.save();
+    console.log(req.body);
+    res.redirect("/");
+  });
+  app.get("/getHajjOmrahSlider", async (req, res) => {
+    const hajjOmrahSliderImages = await HajjOmrahSliderImages.find();
+    res.json(hajjOmrahSliderImages);
+  });
+  app.patch("/updateHajjOmrahSlider/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+      // const id = req.params.id;
+      const hajjOmrahSliderImages =
+        await HajjOmrahSliderImages.findOneAndUpdate({ _id: id }, req.body, {
+          new: true,
+        });
+      res.json(hajjOmrahSliderImages);
+      console.log("update succefullyy");
+      return;
+    } catch (e) {
+      console.log("error while reading Program of id ", id);
+      return res.send("error");
+    }
+  });
+}
+
 mongoose
+  // .connect(
+  //   "mongodb+srv://mohamedqwe542:Sliman01556040246@cluster0.sx79eno.mongodb.net/?retryWrites=true&w=majority"
+  // )
   .connect(
-    "mongodb+srv://mohamedqwe542:Sliman01556040246@cluster0.sx79eno.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://mohamedqwe542:Sliman01556040246@cluster0.im7a3nt.mongodb.net/?retryWrites=true&w=majority"
   )
   .then(() => {
     app.listen(8080 || process.env.PORT, () => {
-      console.log(`loa , 8080`);
+      console.log(` 8080`);
     });
   })
   .catch((err) => {

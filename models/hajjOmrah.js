@@ -49,6 +49,7 @@ const hajjOmrahSchema = mongoose.Schema({
     },
   ],
   cancelationPolices: String,
+  hotOffer: Boolean,
 });
 
 const hajjOmrah = mongoose.model("hajjOmrah", hajjOmrahSchema);
