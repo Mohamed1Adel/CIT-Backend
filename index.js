@@ -17,6 +17,7 @@ app.use(compression());
 app.use(bodyParser.json({ limit: "35mb" }));
 const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
+const Login = require("./models/Login");
 app.use(
   bodyParser.urlencoded({
     extended: true,
@@ -26,16 +27,35 @@ app.use(
 );
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
+app.get("/",cors(), (req, res) => {
   res.send("Hello world!");
   // res.sendFile("./views/home.html", { root: __dirname });
 });
+
+app.post("/login",async(req,res)=>{
+  const {userName,password} = req.body;
+
+  try{
+    const check = await Login.findOne({userName:userName});
+    if(check){
+      res.json("exist")
+    }else{
+      res.json("notexist")
+      
+    }
+  }catch(e){
+    res.json("notexist")
+  }
+})
 
 // app.post("/", (req, res) => {
 //   // res.send("Hello world!");
 //   console.log(req.body);
 //   res.redirect("/");
 // });
+
+
+
 
 {
   //day tour section
