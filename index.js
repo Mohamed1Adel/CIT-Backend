@@ -39,7 +39,7 @@ app.post("/login",async(req,res)=>{
   const {userName,password} = req.body;
 
   try{
-    const check = await Login.findOne({userName:userName});
+    const check = await Login.findOne({userName:userName,password:password});
     if(check){
       res.json("exist")
     }else{
