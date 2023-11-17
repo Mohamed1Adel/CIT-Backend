@@ -27,9 +27,8 @@ const programSchema = mongoose.Schema({
       hotelTitle: String,
       from: String,
       to: String,
-      single: String,
-      double: String,
-      triple: String,
+      startingFrom: String,
+
     },
   ],
   box6: String,
