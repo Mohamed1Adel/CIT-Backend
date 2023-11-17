@@ -21,6 +21,7 @@ const outboundSchema = mongoose.Schema({
       id: Number,
       dayTitle: String,
       dayContent: String,
+      optTour:String,
     },
   ],
   PackhotelsAndPrices: [
