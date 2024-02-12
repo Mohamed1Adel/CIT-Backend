@@ -121,7 +121,7 @@ app.post("/login",async(req,res)=>{
   });
   app.get("/getAllDomestics", async (req, res) => {
     const domestics = await Domestic.find();
-    console.log(domestics);
+    
     res.json(domestics);
   });
   app.get("/getDomesticDetails/:id", async (req, res) => {
@@ -161,7 +161,6 @@ app.post("/login",async(req,res)=>{
     }
   });
 }
-
 {
   // hajjOmrah section
 
