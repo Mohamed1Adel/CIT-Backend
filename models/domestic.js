@@ -26,7 +26,7 @@ const domesticSchema = mongoose.Schema({
     winter: Boolean,
     honeyMoon: Boolean,
     nileCruise: Boolean,
-
+    home:Boolean
   });
 
 const domestic = mongoose.model("Domestic", domesticSchema);
