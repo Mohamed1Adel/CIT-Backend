@@ -31,6 +31,7 @@ const nileCruiseSchema = mongoose.Schema({
       id: Number,
       dayTitle: String,
       dayContent: String,
+      optTour:String,
     },
   ],
   termsAndConditions: String,
