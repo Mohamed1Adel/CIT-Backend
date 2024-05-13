@@ -36,6 +36,8 @@ const nileCruiseSchema = mongoose.Schema({
   ],
   termsAndConditions: String,
   cancellation: String,
+  include: String,
+  exclude: String,
   nileCruise: Boolean,
   hotOffer: Boolean,
 });
