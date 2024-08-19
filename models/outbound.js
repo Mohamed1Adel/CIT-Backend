@@ -10,6 +10,7 @@ const outboundSchema = mongoose.Schema({
   box10: String,
   termsAndConditions: String,
   packInclude: String,
+  packExclude: String,
   visa: String,
   flyDetails: [
     {
