@@ -13,9 +13,13 @@ const Outbound = require("./models/outbound");
 const MainSliderImages = require("./models/mainSliderImages");
 const TransportationSliderImages = require("./models/transportationSliderImages");
 const HajjOmrahSliderImages = require("./models/hajjOmrahSliderImages");
-
 const Program = require("./models/program");
 app.use(cors());
+// app.use(cors({
+//   origin: '*', 
+//   methods: 'GET,POST,PUT,DELETE,PATCH',
+//   allowedHeaders: 'Content-Type,Authorization',
+// }));
 app.use(compression());
 app.use(bodyParser.json({ limit: "35mb" }));
 const port = process.env.PORT || 3000;
