@@ -12,8 +12,6 @@ const outboundSchema = mongoose.Schema({
   packInclude: String,
   packExclude: String,
   visa: String,
-  canceltion: String,
-  notes: String,
   flyDetails: [
     {
       img_url: String,
