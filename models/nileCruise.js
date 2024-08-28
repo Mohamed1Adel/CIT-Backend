@@ -41,6 +41,7 @@ const nileCruiseSchema = mongoose.Schema({
   children: String,
   nileCruise: Boolean,
   hotOffer: Boolean,
+  egypt_cruise: Boolean,
 });
 
 const nileCruise = mongoose.model("nileCruise", nileCruiseSchema);
