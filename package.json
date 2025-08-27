@@ -23,7 +23,7 @@
   "keywords": [],
   "author": "",
   "engines": {
-    "node": "18.18.0"
+    "node": "22.x"
   },
   "license": "ISC",
   "bugs": {
