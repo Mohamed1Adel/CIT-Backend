@@ -474,7 +474,7 @@ app.post("/login",async(req,res)=>{
     }
   });
 }
-module.exports = app;
+
 mongoose
   // .connect(
   //   "mongodb+srv://mohamedqwe542:Sliman01556040246@cluster0.sx79eno.mongodb.net/?retryWrites=true&w=majority"
@@ -484,10 +484,12 @@ mongoose
     "mongodb+srv://admin:CIT_2025_new@cluster0.prld305.mongodb.net/?retryWrites=true&w=majority"
   )
   .then(() => {
-    app.listen(8080 || process.env.PORT, () => {
-      console.log(` 8080`);
-    });
+    // app.listen(8080 || process.env.PORT, () => {
+    //   console.log(` 8080`);
+    // });
   })
   .catch((err) => {
     console.log(err);
   });
+
+module.exports = app;
