@@ -487,9 +487,10 @@ mongoose
     // app.listen(8080 || process.env.PORT, () => {
     //   console.log(` 8080`);
     // });
+    console.log("✅ MongoDB Connected Successfully");
   })
   .catch((err) => {
-    console.log(err);
+    console.log("❌ MongoDB Error:", err.message);
   });
 
 module.exports = app;
