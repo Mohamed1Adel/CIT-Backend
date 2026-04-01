@@ -481,7 +481,7 @@ mongoose
   // )
   .connect(
     // "mongodb+srv://mohamedqwe542:Sliman01556040246@cluster0.im7a3nt.mongodb.net/?retryWrites=true&w=majority"
-    "mongodb+srv://admin:CIT_2025_new@cluster0.prld305.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://admin:mhe7y8pqdDk8h4mB@cluster0.prld305.mongodb.net/?retryWrites=true&w=majority"
   )
   .then(() => {
     // app.listen(8080 || process.env.PORT, () => {
