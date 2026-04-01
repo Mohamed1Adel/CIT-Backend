@@ -474,7 +474,7 @@ app.post("/login",async(req,res)=>{
     }
   });
 }
-
+module.exports = app;
 mongoose
   // .connect(
   //   "mongodb+srv://mohamedqwe542:Sliman01556040246@cluster0.sx79eno.mongodb.net/?retryWrites=true&w=majority"
